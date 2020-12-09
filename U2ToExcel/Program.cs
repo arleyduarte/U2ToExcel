@@ -30,8 +30,7 @@ namespace U2ToExcel
 
 
 
-            Log.Info($"Start ------------------------");
-
+            Log.Info($"Start  ------------------------");
 
 
             var reportArg = GetArguments(args);
@@ -83,14 +82,14 @@ namespace U2ToExcel
 
                 for (int i = 0; i < all.Length; i++)
                 {
-                    if (i == 0)
+                    switch (i)
                     {
-                        reportArg.Origin = all[i];
-                    }
-
-                    if (i == 1)
-                    {
-                        reportArg.Destination = all[i];
+                        case 0:
+                            reportArg.Origin = all[i];
+                            break;
+                        case 1:
+                            reportArg.Destination = all[i];
+                            break;
                     }
                 }
 
