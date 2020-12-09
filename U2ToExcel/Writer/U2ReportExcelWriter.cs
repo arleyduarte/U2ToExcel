@@ -34,12 +34,9 @@ namespace U2ToExcel.Writer
 
             foreach (var line in cellsContent)
             {
-              
-
                 sl.SetCellValue(rowStart, columnCounter, line);
                 sl.SetCellStyle(rowStart, columnCounter, U2ReportStyles.GetColumnsFilterStyle(sl));
                 sl.SetColumnWidth(columnCounter, U2ReportStyles.ColumnWidth);
-
 
                 columnCounter++;
             }
