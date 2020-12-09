@@ -18,6 +18,20 @@ namespace U2ToExcel.Reader
             return u2Report;
         }
 
+
+        public static List<string> GetMoneyColumns(string args)
+        {
+            var columns = args.Split(":");
+            var rColumns = new List<string>();
+            foreach (var column in columns)
+            {
+                if(!string.IsNullOrWhiteSpace(column))
+                  rColumns.Add(column);
+            }
+
+            return rColumns;
+        }
+
         private static List<string> GetHeader(string[] lines)
         {
             var headers = new List<string>();

@@ -16,7 +16,7 @@ namespace U2ToExcel
     {
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-
+        //https://zyght.blob.core.windows.net/acorde-demo/net5.0.zip
         static void Main(string[] args)
         {
 
@@ -30,8 +30,9 @@ namespace U2ToExcel
 
 
 
-            Log.Info($"Start  ------------------------");
-
+            Log.Info($"Start 3 ------------------------");
+            Log.Info(args.Length);
+            Log.Info(args);
 
             var reportArg = GetArguments(args);
 
@@ -75,10 +76,26 @@ namespace U2ToExcel
         {
             var reportArg = new ReportArguments();
 
+
+            for (int i = 0; i < args.Length; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        reportArg.Origin = args[i];
+                        break;
+                    case 1:
+                        reportArg.Destination = args[i];
+                        break;
+                }
+            }
+
+
+            /*
             foreach (var argument in args)
             {
-
-                var all = argument.Split(' ');
+                Log.Info($"GetArguments args  {argument}");
+                var all = argument.Split(',');
 
                 for (int i = 0; i < all.Length; i++)
                 {
@@ -94,6 +111,10 @@ namespace U2ToExcel
                 }
 
             }
+            */
+
+
+
 
             return reportArg;
 

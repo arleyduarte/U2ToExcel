@@ -17,14 +17,14 @@ namespace U2ToExcel.Reader.Tests
         [SetUp()]
         public void SetUp()
         {
-             u2Report =
-                new ReportReader().Load(
-                    @"C:\Users\zyghtadmin\source\repos\U2ToExcel\U2ToExcel\Resources\REP-ORIGINAL.csv");
+            u2Report =
+                ReportReader.Load(
+                   @"C:\Users\zyghtadmin\source\repos\U2ToExcel\U2ToExcel\Resources\REP-ORIGINAL.csv");
         }
         [Test()]
         public void LoadTest_Header_Successfully()
         {
-  
+
 
 
             Assert.IsNotEmpty(u2Report.Headers);
@@ -41,9 +41,22 @@ namespace U2ToExcel.Reader.Tests
 
 
             Assert.IsNotEmpty(u2Report.Body);
-            Assert.IsTrue( u2Report.Body[0].StartsWith("Cta-Puc"));
+            Assert.IsTrue(u2Report.Body[0].StartsWith("Cta-Puc"));
 
 
+        }
+
+        [Test()]
+        public void SetUpMoneyColumnsTest()
+        {
+
+            var report = new U2Report();
+            var columns = "Debitos:Saldo:";
+
+            var c = ReportReader.GetMoneyColumns(columns);
+            report.MoneyColumns = c;
+
+            Assert.AreEqual(2, ReportReader.GetMoneyColumns(columns).Count);
         }
     }
 }

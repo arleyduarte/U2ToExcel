@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SpreadsheetLight;
 using U2ToExcel.Reader;
 
 namespace U2ToExcel.Writer.Tests
@@ -20,7 +21,7 @@ namespace U2ToExcel.Writer.Tests
         public void SetUp()
         {
             u2Report =
-                new ReportReader().Load(
+                 ReportReader.Load(
                     @"C:\Users\zyghtadmin\source\repos\U2ToExcel\U2ToExcel\Resources\REP-ORIGINAL.csv");
         }
 
@@ -30,11 +31,37 @@ namespace U2ToExcel.Writer.Tests
 
             var destinationPath = $@"TestReport.xlsx";
 
-            var writer = new U2ReportExcelWriter();
+   
 
-            writer.WriteReport(u2Report, destinationPath);
+            U2ReportExcelWriter.WriteReport(u2Report, destinationPath);
+
+            Assert.IsTrue(File.Exists(destinationPath));
+
+
+
+
+        }
+
+        [Test()]
+        public  void WriteReport_Functions()
+        {
+            var sl = new SLDocument();
+            var destinationPath = $@"TestReportF.xlsx";
+            var cellRef = $"A1";
+
+
+            var style = new SLStyle();
+            style.FormatCode = "#,##0.00";
+            sl.SetCellStyle("A1", style);
+
+            sl.SetCellValue(cellRef,  148100.98);
+
+            sl.SaveAs(destinationPath);
 
             Assert.IsTrue(File.Exists(destinationPath));
         }
     }
+
+
+
 }

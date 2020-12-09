@@ -8,6 +8,6 @@ namespace U2ToExcel.Reader
         public List<string> Headers { get; set; }
         public List<string> Body { get; set; }
 
-
+        public List<string> MoneyColumns { get; set; }
     }
 }
