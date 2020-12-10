@@ -20,16 +20,22 @@ namespace U2ToExcel.Writer.Tests
         [SetUp()]
         public void SetUp()
         {
+            /* u2Report =
+                  ReportReader.Load(
+                     @"C:\Users\zyghtadmin\source\repos\U2ToExcel\U2ToExcel\Resources\REP-ORIGINAL.csv");*/
+
+            var columns = "Debitos:Saldo:Creditos:Base";
+
             u2Report =
-                 ReportReader.Load(
-                    @"C:\Users\zyghtadmin\source\repos\U2ToExcel\U2ToExcel\Resources\REP-ORIGINAL.csv");
+                ReportReader.Load(
+                    @"C:\Users\zyghtadmin\source\repos\U2ToExcel\U2ToExcel\Resources\REP-ORIGINAL-Short.csv", columns);
         }
 
         [Test()]
         public void WriteReportTest()
         {
 
-            var destinationPath = $@"TestReport.xlsx";
+            var destinationPath = $@"TestReportShort.xlsx";
 
    
 

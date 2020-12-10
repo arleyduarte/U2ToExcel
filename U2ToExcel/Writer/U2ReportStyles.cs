@@ -9,6 +9,7 @@ namespace U2ToExcel.Writer
 
         private static SLStyle _columnsFilterStyle;
         private static SLStyle _stripStyle;
+        private static SLStyle _moneyStyle;
 
 
         public static SLStyle GetColumnsFilterStyle(SLDocument sl)
@@ -20,6 +21,19 @@ namespace U2ToExcel.Writer
             _columnsFilterStyle.Fill.SetPattern(PatternValues.Solid, System.Drawing.Color.FromArgb(217, 225, 241), System.Drawing.Color.White);
 
             return _columnsFilterStyle;
+        }
+
+
+        public static SLStyle GetMoneyStyle(SLDocument sl)
+        {
+            if (_moneyStyle != null) return _moneyStyle;
+
+            _moneyStyle = sl.CreateStyle();
+            _moneyStyle.FormatCode = "#,##0.00";
+
+         
+    
+            return _moneyStyle;
         }
 
 

@@ -50,13 +50,14 @@ namespace U2ToExcel.Reader.Tests
         public void SetUpMoneyColumnsTest()
         {
 
-            var report = new U2Report();
+      
             var columns = "Debitos:Saldo:";
 
-            var c = ReportReader.GetMoneyColumns(columns);
-            report.MoneyColumns = c;
+            var c = ArgumentHelper.GetMoneyColumns(columns);
+            u2Report.MoneyColumns = c;
 
-            Assert.AreEqual(2, ReportReader.GetMoneyColumns(columns).Count);
+            Assert.IsFalse(u2Report.IsMoneyColumn(0));
+            Assert.IsTrue(u2Report.IsMoneyColumn(11));
         }
     }
 }

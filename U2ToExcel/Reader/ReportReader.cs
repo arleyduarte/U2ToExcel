@@ -6,7 +6,7 @@ namespace U2ToExcel.Reader
 {
     public  class ReportReader
     {
-        public static U2Report  Load(string path)
+        public static U2Report  Load(string path, string moneyColumns = "")
         {
 
             var u2Report = new U2Report();
@@ -14,23 +14,11 @@ namespace U2ToExcel.Reader
 
             u2Report.Headers = GetHeader(lines);
             u2Report.Body = GetBody(lines);
+            u2Report.MoneyColumns = ArgumentHelper.GetMoneyColumns(moneyColumns);
 
             return u2Report;
         }
 
-
-        public static List<string> GetMoneyColumns(string args)
-        {
-            var columns = args.Split(":");
-            var rColumns = new List<string>();
-            foreach (var column in columns)
-            {
-                if(!string.IsNullOrWhiteSpace(column))
-                  rColumns.Add(column);
-            }
-
-            return rColumns;
-        }
 
         private static List<string> GetHeader(string[] lines)
         {

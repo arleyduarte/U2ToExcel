@@ -24,17 +24,10 @@ namespace U2ToExcel
             XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
 
 
+            Log.Info($"Start ------------------------");
+            Log.Info($"Argumentos pasados {args.Length}: {args}");
 
-
-
-
-
-
-            Log.Info($"Start 3 ------------------------");
-            Log.Info(args.Length);
-            Log.Info(args);
-
-            var reportArg = GetArguments(args);
+            var reportArg = ArgumentHelper.GetArguments(args);
 
 
             if (string.IsNullOrWhiteSpace(reportArg.Origin) || string.IsNullOrWhiteSpace(reportArg.Destination))
@@ -46,12 +39,12 @@ namespace U2ToExcel
 
             Log.Info($"Archivo origen: {reportArg.Origin}");
             Log.Info($"Archivo destino: {reportArg.Destination}");
-
+            Log.Info($"Columnas numericas: {reportArg.MoneyColumns}");
             try
             {
 
 
-                var u2Report = ReportReader.Load(reportArg.Origin);
+                var u2Report = ReportReader.Load(reportArg.Origin, reportArg.MoneyColumns);
                 Log.Info($"Lineas cargadas: {u2Report.Body.Count}");
 
                 U2ReportExcelWriter.WriteReport(u2Report, reportArg.Destination);
@@ -71,60 +64,6 @@ namespace U2ToExcel
 
         }
 
-
-        private static ReportArguments GetArguments(string[] args)
-        {
-            var reportArg = new ReportArguments();
-
-
-            for (int i = 0; i < args.Length; i++)
-            {
-                switch (i)
-                {
-                    case 0:
-                        reportArg.Origin = args[i];
-                        break;
-                    case 1:
-                        reportArg.Destination = args[i];
-                        break;
-                }
-            }
-
-
-            /*
-            foreach (var argument in args)
-            {
-                Log.Info($"GetArguments args  {argument}");
-                var all = argument.Split(',');
-
-                for (int i = 0; i < all.Length; i++)
-                {
-                    switch (i)
-                    {
-                        case 0:
-                            reportArg.Origin = all[i];
-                            break;
-                        case 1:
-                            reportArg.Destination = all[i];
-                            break;
-                    }
-                }
-
-            }
-            */
-
-
-
-
-            return reportArg;
-
-
-        }
-        private class ReportArguments
-        {
-            public string Origin {get; set; }
-            public string Destination { get; set; }
-        }
 
 
     }
