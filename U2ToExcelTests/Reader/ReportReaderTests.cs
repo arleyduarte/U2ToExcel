@@ -19,7 +19,7 @@ namespace U2ToExcel.Reader.Tests
         {
             u2Report =
                 ReportReader.Load(
-                   @"C:\Users\zyghtadmin\source\repos\U2ToExcel\U2ToExcel\Resources\REP-ORIGINAL.csv");
+                   @"C:\Users\zyghtadmin\source\repos\U2ToExcel\U2ToExcel\Resources\REP-ORIGINAL-Short.csv");
         }
         [Test()]
         public void LoadTest_Header_Successfully()
@@ -56,8 +56,8 @@ namespace U2ToExcel.Reader.Tests
             var c = ArgumentHelper.GetMoneyColumns(columns);
             u2Report.MoneyColumns = c;
 
-            Assert.IsFalse(u2Report.IsMoneyColumn(0));
-            Assert.IsTrue(u2Report.IsMoneyColumn(11));
+            Assert.IsFalse(u2Report.IsMoneyColumn(1));
+            Assert.IsTrue(u2Report.IsMoneyColumn(12));
         }
     }
 }

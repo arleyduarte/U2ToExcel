@@ -17,7 +17,7 @@ namespace U2ToExcel.Reader
 
 
 
-            if (index > headersBodyCells.Count)
+            if (index > headersBodyCells.Count || index == 0)
                 return false;
 
             foreach (var moneyColumn in MoneyColumns)
