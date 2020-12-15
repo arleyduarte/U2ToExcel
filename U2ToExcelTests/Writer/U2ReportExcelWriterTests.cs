@@ -24,7 +24,8 @@ namespace U2ToExcel.Writer.Tests
                   ReportReader.Load(
                      @"C:\Users\zyghtadmin\source\repos\U2ToExcel\U2ToExcel\Resources\REP-ORIGINAL.csv");*/
 
-            var columns = "Debitos:Saldo:Creditos:Base";
+         //   var columns = "Debitos:Saldo:Creditos:Base";
+         string columns = null;
 
             u2Report =
                 ReportReader.Load(

@@ -11,8 +11,12 @@ namespace U2ToExcel
 
         public static List<string> GetMoneyColumns(string args)
         {
-            var columns = args.Split(":");
             var rColumns = new List<string>();
+            if (string.IsNullOrWhiteSpace(args))
+                return rColumns;
+
+            var columns = args.Split(":");
+
             foreach (var column in columns)
             {
                 if(!string.IsNullOrWhiteSpace(column))
