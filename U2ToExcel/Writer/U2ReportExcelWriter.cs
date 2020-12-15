@@ -77,6 +77,7 @@ namespace U2ToExcel.Writer
             {
                 double value = 0;
 
+                content = content.Replace(" ", string.Empty);
                 if (!string.IsNullOrWhiteSpace(content))
                     value = double.Parse(content);
 
