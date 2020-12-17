@@ -47,7 +47,7 @@ namespace U2ToExcel.Writer
             }
 
             var cellRef = $"A{rowStart}";
-            var cellRefEnd = $"X{rowStart}";
+            var cellRefEnd = $"XX{rowStart}";
 
             sl.Filter(cellRef, cellRefEnd);
         }

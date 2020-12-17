@@ -20,7 +20,7 @@ namespace U2ToExcel
             foreach (var column in columns)
             {
                 if(!string.IsNullOrWhiteSpace(column))
-                    rColumns.Add(column);
+                    rColumns.Add(column.Trim());
             }
 
             return rColumns;

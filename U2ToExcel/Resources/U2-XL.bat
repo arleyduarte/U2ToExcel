@@ -1,0 +1,1 @@
+E:\U2\CONVERSOR-XL\U2ToExcel.exe E:\U2\14750\REP\CARTERA-U2.csv U:\U2\COLSAISA\CARTERA-10.xlsx Plazo:Dias-V:Corriente:V 1-30:V 31-60:V 61-90:V 91-120:V 121-180:V 181-360:V 360-mas:TOTAL                                                                                                                   
